@@ -124,7 +124,7 @@ chtsh() {
 }
 
 # ==============================================================================
-# 8. INTEGRACIONES Y PLUGINS DE SISTEMA
+# INTEGRACIONES Y PLUGINS DE SISTEMA
 # ==============================================================================
 # FZF (key-bindings y completion incluidos)
 source <(fzf --zsh)
