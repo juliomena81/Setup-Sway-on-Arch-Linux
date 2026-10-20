@@ -1,0 +1,206 @@
+/* -------------------- COLORS --------------------- */
+
+@define-color background rgba(16, 12, 8, 0.6);
+@define-color sec-background rgba(27, 27, 27, 0.4);
+
+
+@define-color workspaces rgb(119, 139, 165);
+@define-color ws-focused rgb(67, 107, 149);
+@define-color ws-hover rgb(93, 137, 186);
+@define-color ws-back-hover rgba(36, 33, 36, 0.5);
+@define-color ws-urgent rgba(204, 51, 51, 0.4);
+
+@define-color scratchpad rgba(140, 190, 214, 0.5);
+@define-color scratchpad-empty rgba(93, 137, 186, 0.5);
+
+@define-color warning rgb(255, 170, 0);
+@define-color critical rgb(204, 51, 51);
+/* ------------------------------------------------ */
+
+* {
+  font-family: "MesloLGMDZ Nerd Font", "Font Awesome 6 Free";
+  font-size: 9pt;
+  padding: 0;
+  margin: 0;
+}
+
+window#waybar {
+  border-radius: 19px;
+  background-color: @background;
+}
+
+#scratchpad {
+  padding: 2px 18px;
+  color: @scratchpad;
+  background-color: @sec-background;
+}
+
+#scratchpad.empty {
+  color: @scratchpad-empty;
+}
+
+#workspaces {
+  margin-right: 10px;
+  background-color: @sec-background;
+}
+
+#workspaces button {
+  padding: 2px;
+  margin: 9px 3px;
+  color: @workspaces;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+#workspaces button.focused,
+#workspaces button.active {
+  color: @ws-focused;
+  font-weight: bold;
+}
+
+#workspaces button.urgent {
+  color: @ws-urgent;
+}
+
+#workspaces button:hover {
+  color: @ws-hover;
+  background-color: @ws-back-hover;
+}
+
+#mode {
+  margin: 0 16px;
+}
+
+#custom-pacman {
+  margin: 0 15px;
+}
+
+#memory {
+  margin: 8px 0;
+  background-color: rgba(93, 138, 168, 0.2);
+  padding: 0 12px;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+#disk {
+  margin: 8px 0;
+  padding: 0 12px;
+  background-color: rgba(93, 138, 168, 0.2);
+}
+
+#temperature.nvme {
+  margin: 8px 0;
+  padding: 0 9px 0 2px;
+  background-color: rgba(93, 138, 168, 0.2);
+}
+
+#cpu {
+  margin: 8px 0;
+  padding: 0 15px;
+  background-color: rgba(93, 138, 168, 0.2);
+}
+
+#temperature.cpu {
+  margin: 8px 0;
+  padding: 0 12px 0 3px;
+  background-color: rgba(93, 138, 168, 0.2);
+}
+
+#temperature.gpu {
+  margin: 8px 0;
+  padding: 0 12px;
+  background-color: rgba(93, 138, 168, 0.2);
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+#temperature.warning {
+  color: @warning;
+}
+
+#temperature.critical {
+  color: @critical;
+}
+
+
+#custom-weather {
+  margin-left: 18px;
+}
+
+
+#idle_inhibitor {
+  margin: 8px 0;
+  padding: 0 12px 0 15px;
+  background-color: rgba(93, 138, 168, 0.2);
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+#backlight {
+  margin: 8px 0;
+  padding: 0 12px;
+  background-color: rgba(93, 138, 168, 0.2);
+}
+
+#pulseaudio {
+  margin: 8px 0;
+  padding: 0 12px;
+  background-color: rgba(93, 138, 168, 0.2);
+}
+
+#custom-vpn {
+  margin: 8px 0;
+  padding: 0 12px;
+  background-color: rgba(93, 138, 168, 0.2);
+}
+
+#network {
+  margin: 8px 0;
+  padding: 0 12px;
+  background-color: rgba(93, 138, 168, 0.2);
+}
+
+#custom-lenovo-battery {
+  margin: 8px 0;
+  padding: 0 12px;
+  background-color: rgba(93, 138, 168, 0.2);
+}
+
+#battery {
+  margin: 8px 0;
+  background-color: rgba(93, 138, 168, 0.2);
+  padding: 0 13px 0 12px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+#battery.warning {
+  color: @warning;
+}
+
+@keyframes blink {
+  50% { color: alpha(@critical, 0.35); }
+}
+
+#battery.critical {
+  color: @critical;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#clock {
+  padding: 6px 12px;
+  background-color: @sec-background;
+}
+
+#custom-power {
+  padding: 6px 14px;
+  background-color: @sec-background;
+  color: rgb(194, 59, 34);
+}
+
+

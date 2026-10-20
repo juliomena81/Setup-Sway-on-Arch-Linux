@@ -1,0 +1,241 @@
+{
+    "layer": "top",
+    "position": "bottom",
+    "spacing": 0,
+    "margin-bottom": 10,
+    "margin-left": 10,
+    "margin-right": 10,
+    "modules-left": [
+        "sway/scratchpad",
+        "sway/workspaces",
+        "sway/mode",
+        "custom/pacman",
+        "memory",
+        "disk",
+        "temperature#nvme",
+        "cpu",
+        "temperature#cpu",
+        "temperature#gpu",
+        "custom/weather"
+    ],
+
+    "modules-center": [],
+
+    "modules-right": [
+        "idle_inhibitor",
+        "backlight",
+        "pulseaudio",
+        "custom/vpn",
+        "network",
+        "custom/lenovo-battery",
+        "battery",
+        "clock",
+        "custom/power"
+    ],
+
+    "sway/scratchpad": {
+        "format": "<span size='16pt'>{icon}</span>",
+        "show-empty": true,
+        "format-icons": [
+            ""
+        ],
+        "tooltip": true,
+        "tooltip-format": "{app}: {title}"
+    },
+
+    "sway/workspaces": {
+        "all-outputs": true,
+        "disable-scroll": true,
+        "format": "<span size='15pt'> {icon} </span>",
+        "format-icons": {
+            "1": "󰟒",
+            "2": "󱍸",
+            "3": "",
+            "4": "󰷸",
+            "5": "󱡝",
+            "6": "󰎆",
+            "7": "󰓏",
+            "urgent": "󱠇"
+        }
+    },
+
+    "sway/mode": {
+        "format": "<span size='9pt'>{}</span>",
+        "max-length": 50
+    },    
+
+    "custom/pacman": {
+        "format": "{text}  󰮯 ",
+        "exec": "checkupdates | wc -l",
+        "on-click": "swaymsg exec '~/.config/waybar/scripts/pacman.sh'",
+        "signal": 8
+    },
+
+    "memory": {
+        "interval": 1,
+        "format": "  {used:0.1f}G / {total:0.1f}G",
+        "on-click": "alacritty -e top -o %MEM"
+    },
+
+    "disk": {
+        "path": "/",
+        "format": "  {path} {percentage_used}%",
+        "on-click": "alacritty -e ncdu / -x --disk-usage --show-itemcount --show-mtime --show-graph"
+    },
+
+    "temperature#nvme": {
+        "hwmon-path": "/sys/devices/pci0000:00/0000:00:02.2/0000:01:00.0/nvme/nvme0/hwmon3/temp1_input",
+        "critical-threshold": 70,
+        "format": "{temperatureC}°C",
+        "format-critical": "{temperatureC}°C"
+    },
+
+    "cpu": {
+        "format": "{icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7} {usage:>2}  ",
+        "format-icons": [
+            "▁",
+            "▂",
+            "▃",
+            "▄",
+            "▅",
+            "▆",
+            "▇",
+            "█"
+        ],
+        "interval": 1,
+        "tooltip": false,
+        "on-click": "alacritty -e top -i -o %CPU",
+        "on-click-middle": "alacritty --hold -e inxi -Cxx",
+        "states": {
+            "warning": 70,
+            "critical": 90
+        }
+    },
+
+    "temperature#cpu": {
+        "hwmon-path": "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon5/temp1_input",
+        "warning-threshold": 65,
+        "critical-threshold": 85,
+        "format": "{temperatureC}°C<span size='11pt'> 󱃃</span>",
+        "format-warning": "{temperatureC}°C<span size='11pt'> 󰔏</span>",
+        "format-critical": "{temperatureC}°C<span size='11pt'> 󱃂</span>"
+    },
+
+    "temperature#gpu": {
+        "hwmon-path": "/sys/devices/pci0000:00/0000:00:08.1/0000:04:00.0/hwmon/hwmon4/temp1_input",
+        "critical-threshold": 85,
+        "format": "  {temperatureC}°C",
+        "format-critical": "  {temperatureC}°C"
+    },
+    
+    "custom/weather": {
+        "exec": "${HOME}/.config/waybar/scripts/get_weather.sh Arona+España",
+        "return-type": "json",
+        "format": "{}",
+        "tooltip": true,
+        "interval": 3600
+    },
+
+    "idle_inhibitor": {
+        "format": "<span size='12pt'>{icon}</span>",
+        "format-icons": {
+            "activated": "󰈈",
+            "deactivated": "󱀦"
+        }
+    },
+
+    "backlight": {
+        "device": "amdgpu_bl1",
+        "format": "{percent}% {icon}",
+        "format-icons": [
+            "󰪟",
+            "󰪠",
+            "󰪡",
+            "󰪢",
+            "󰪤",
+            "󰪥"
+        ],
+        "on-click": "brightnessctl set 5%+",
+        "on-click-right": "brightnessctl set 5%-"
+    },
+
+    "pulseaudio": {
+        "format": "<span size='10pt'>{icon}  {volume}%</span>",
+        "format-muted": "<span size='11pt'> </span>",
+        "format-icons": {
+            "default": [
+                "",
+                "",
+                ""
+            ]
+        },
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "pavucontrol",
+        "tooltip": true
+    },
+
+    "custom/vpn": {
+        "format": "<span size='12pt'>{}</span>",
+        "return-type": "json",
+        "interval": 5,
+        "exec": "${HOME}/.config/waybar/scripts/vpn_status.sh",
+        "on-click": "/usr/bin/protonvpn-app",
+        "tooltip": false
+    },
+
+    "network": {
+        "format-wifi": "<span size='11pt'>󰤨  </span>{essid} ({signalStrength}%)",
+        "format-linked": "{ifname} (No ip) ",
+        "format-disconnected": "<span size='11pt'>󰤭  OFF</span>",
+        "format-ethernet": "󰈀",
+        "tooltip-format": "essid: {essid}\r ip: {ipaddr}\r gateway {gwaddr}\r interface: {ifname}",
+        "on-click": "nm-connection-editor"
+    },
+
+    "custom/lenovo-battery": {
+        "exec": "~/.config/waybar/scripts/battery-mode.sh",
+        "interval": 5,
+        "format": "<span size='13pt'>{}</span>",
+        "signal": 10,
+        "on-click": "~/.config/waybar/scripts/battery-mode.sh switch"
+    },
+
+    "battery": {
+        "states": {
+            "good": 80,
+            "warning": 40,
+            "critical": 15
+        },
+        "format": "<span size='11pt'> {icon} {capacity}% </span>",
+        "format-charging": "<span size='11pt'> {icon} {capacity}% </span>",
+        "format-alt": "{time} {icon}",
+        "format-icons": {
+            "default": [
+                "",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "charging": [
+                "󰢜",
+                "󰂇",
+                "󰢝",
+                "󰂊",
+                "󰂄"
+            ]
+        },
+        "tooltip": true
+    },
+
+    "clock": {
+        "format": "<span size='10pt'>{:%H:%M %p - %d %b %Y}</span>"
+    },
+
+    "custom/power": {
+        "format": "⏻ ",
+        "tooltip": false,
+        "on-click": "~/.config/waybar/scripts/power_menu.sh"
+    }
+
+}
