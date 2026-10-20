@@ -1,0 +1,54 @@
+[manager]
+cwd = { fg = "#79b8ff" }
+
+# Selección y cursor
+hovered  = { fg = "#fafbfc", bg = "#30363d", bold = true }
+selected = { fg = "#fafbfc", bg = "#21262d" }
+
+# Marcadores de bordes
+border_symbol = "│"
+border_style  = { fg = "#30363d" }
+
+[status]
+separator_open  = ""
+separator_close = ""
+
+# Modos de operación
+mode_normal = { fg = "#24292e", bg = "#2188ff", bold = true }
+mode_select = { fg = "#24292e", bg = "#b392f0", bold = true }
+mode_unset  = { fg = "#24292e", bg = "#ea4a5a", bold = true }
+
+# Permisos
+permissions_t = { fg = "#79b8ff" }
+permissions_r = { fg = "#ffea7f" }
+permissions_w = { fg = "#ea4a5a" }
+permissions_x = { fg = "#34d058" }
+permissions_s = { fg = "#8b949e" }
+
+[select]
+border   = { fg = "#2188ff" }
+active   = { fg = "#fafbfc", bg = "#30363d" }
+inactive = { fg = "#8b949e" }
+
+[input]
+border   = { fg = "#2188ff" }
+title    = { fg = "#fafbfc" }
+value    = { fg = "#d1d5da" }
+
+[completion]
+border   = { fg = "#2188ff" }
+active   = { fg = "#fafbfc", bg = "#30363d" }
+inactive = { fg = "#8b949e" }
+
+[tasks]
+border   = { fg = "#2188ff" }
+title    = { fg = "#fafbfc" }
+hovered  = { fg = "#fafbfc", bg = "#30363d" }
+
+[which]
+mask            = { bg = "#161b22" }
+cand            = { fg = "#79b8ff" }
+rest            = { fg = "#8b949e" }
+desc            = { fg = "#fafbfc" }
+separator       = "  "
+separator_style = { fg = "#30363d" }
