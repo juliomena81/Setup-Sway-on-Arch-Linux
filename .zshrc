@@ -151,7 +151,7 @@ fi
 source <(starship init zsh)
 
 # ==============================================================================
-# 9. ZELLIJ: selector de sesiones y layouts
+# ZELLIJ: selector de sesiones y layouts
 # ==============================================================================
 zj() {
     (( $+commands[zellij] )) || { print -u2 'zellij no está instalado'; return 1 }
