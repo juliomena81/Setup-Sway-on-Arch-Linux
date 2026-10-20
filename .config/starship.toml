@@ -1,0 +1,67 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+[░▒▓](#536895)\
+[ 󰣇 ](bg:#778ba5 fg:#fafbfc)\
+[](bg:#30363d fg:#778ba5)\
+$directory\
+$git_branch\
+$git_status\
+$python\
+$nodejs\
+$package\
+[](fg:#30363d)\
+$cmd_duration\
+\n$character"""
+
+[directory]
+style = "fg:#e1e4e8 bg:#30363d"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documentos" = "󰈙 "
+"Descargas" = " "
+"Música" = " "
+"Imágenes" = " "
+"Plantillas" = "󰔯 "
+"Proyectos" = " "
+
+[git_branch]
+symbol = "󰊢"
+style = "bg:#30363d"
+format = '[[$symbol $branch ](fg:#79b8ff bg:#30363d)]($style)'
+
+[git_status]
+style = "bg:#30363d"
+format = '[[($all_status$ahead_behind )](fg:#79b8ff bg:#30363d)]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:#30363d"
+format = '[[$symbol ($version) ](fg:#34d058 bg:#30363d)]($style)'
+
+[python]
+symbol = ""
+style = "bg:#30363d"
+format = '[[($virtualenv )$symbol ($version) ](fg:#ffea7f bg:#30363d)]($style)'
+
+#[docker_context]
+#symbol = "🐳"
+#style = "bg:#30363d"
+#format = '[[$symbol ($context) ](fg:#58a6ff bg:#30363d)]($style)'
+
+[package]
+symbol = "📦"
+style = "bg:#30363d"
+format = '[[$symbol ($version) ](fg:#8b949e bg:#30363d)]($style)'
+
+[cmd_duration]
+min_time = 2_000
+style = "fg:#d18616"
+format = ' [⏱ $duration]($style)'
+
+[character]
+success_symbol = "[❯](bold #34d058)"
+error_symbol = "[❯](bold #ea4a5a)"
