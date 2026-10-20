@@ -1,0 +1,22 @@
+layout {
+    default_tab_template {
+        pane size=1 borderless=true {
+            plugin location="zellij:compact-bar"
+        }
+        children
+    }
+
+    tab name="System Monitor" {
+        pane split_direction="vertical" {
+            /
+            pane size="60%" command="btop"
+            
+            pane size="40%" split_direction="horizontal" {
+                
+                pane command="yazi"
+                
+                pane
+            }
+        }
+    }
+}
