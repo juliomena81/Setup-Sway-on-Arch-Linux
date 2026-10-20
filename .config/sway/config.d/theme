@@ -1,0 +1,27 @@
+smart_gaps off
+gaps inner 17
+gaps outer 5
+
+default_border none
+default_floating_border none
+
+# --- ESQUEMA DE COLORES SWAY---
+
+# class                 borde   fondo   texto   indicador borde_hijo
+client.focused          #000000 #000000 #ffffff #000000   #000000
+client.focused_inactive #000000 #000000 #bbbbbb #000000   #000000
+client.unfocused        #000000 #000000 #888888 #000000   #000000
+client.urgent           #000000 #000000 #ffffff #000000   #000000
+client.placeholder      #000000 #000000 #ffffff #000000   #000000
+client.background       #000000
+
+### GTK Themes - Icons - Cursor - Font ###
+set $gnome-schema org.gnome.desktop.interface
+
+exec_always {
+    gsettings set $gnome-schema gtk-theme 'Squared'
+    gsettings set $gnome-schema icon-theme 'kora-grey'
+    gsettings set $gnome-schema font-name 'UbuntuNerdFont'
+}
+
+seat seat0 xcursor_theme Sweet-cursors 24

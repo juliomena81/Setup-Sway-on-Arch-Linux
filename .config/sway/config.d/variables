@@ -1,0 +1,19 @@
+# Mod Key (Use Mod1 for Alt.)
+set $mod Mod4
+
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+
+# Terminal emulator
+set $term alacritty
+
+# Application launcher
+#set $menu wmenu-run
+set $menu fuzzel
+
+set $mode_resize 󰆐
+set $mode_power 󰐥
+set $mode_screenshot 󰄀

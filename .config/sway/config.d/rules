@@ -1,0 +1,13 @@
+# Evitar que la pantalla se apague si mpv está reproduciendo
+for_window [class="mpv"] inhibit_idle visible
+
+# Hacer que mpv sea flotante por defecto
+# for_window [app_id="mpv"] floating enable
+
+
+for_window [app_id="btop_floating"] {
+    floating enable
+    resize set width 1100px height 800px
+    move position center
+    border pixel 2
+}

@@ -1,0 +1,6 @@
+### Includes ###
+
+include /etc/sway/config.d/*
+
+include ~/.config/sway/config.d/variables
+include ~/.config/sway/config.d/*

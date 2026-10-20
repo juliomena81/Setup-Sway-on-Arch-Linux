@@ -1,0 +1,7 @@
+exec swaync
+
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+exec --no-startup-id autotiling
+
+exec waybar
