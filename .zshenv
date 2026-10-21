@@ -1,3 +1,4 @@
+export ASTRO_TELEMETRY_DISABLED=1
 export EDITOR=nvim
 export VISUAL=nvim
 export PAGER=bat
