@@ -25,12 +25,13 @@ mode "$mode_resize" {
 bindsym $mod+r mode "$mode_resize"
  
 
+
 ## Mode Screenshot
 mode "$mode_screenshot" { 
-     bindsym Shift+f exec grim -t jpeg -q 90 ~/Imágenes/$(date +%Y-%m-%d_%H-%M-%S).jpg, mode "default"
-     bindsym Shift+r exec grim -g "$(slurp)" - | swappy -f -, mode "default"
-
-     bindsym Escape mode "default"
+    bindsym Shift+f exec grim ~/Imágenes/$(date +%Y-%m-%d_%H-%M-%S).png, mode "default"
+    bindsym Shift+r exec grim -g "$(slurp)" - | swappy -f -, mode "default"
+    bindsym Shift+c exec grim -g "$(slurp)" - | wl-copy, mode "default"
+    bindsym Escape mode "default"
 }
 
 bindsym $mod+Print mode "$mode_screenshot"
@@ -61,14 +62,14 @@ bindsym $mod+Print mode "$mode_screenshot"
 
     
 
-    
+    # Bloqueo de pantalla manual ($mod+L)
     bindsym $mod+Shift+q exec swaylock -f -c 000000
 
     # Inhibir el modo reposo temporalmente (Super + i)
     bindsym $mod+i exec pkill -STOP -x swayidle
     bindsym $mod+Shift+i exec pkill -CONT -x swayidle
 
-    # Modo conservación.
+    # Modo conservación. Si está en 0 lo pone en 1, y viceversa (Usa Super + B)
     bindsym $mod+Shift+b exec bash -c '[[ $(cat /sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode) == 0 ]] && echo 1 | sudo /usr/bin/tee /sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode || echo 0 | sudo /usr/bin/tee /sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode'
 
 # Movimiento:
@@ -156,7 +157,7 @@ bindsym $mod+Print mode "$mode_screenshot"
     bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
     bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 
-    # Volumen
+    # Volumen (Pipewire/Pulse)
     
     set $vol_script /home/julio/.config/scripts/volume.sh
 
@@ -165,7 +166,11 @@ bindsym $mod+Print mode "$mode_screenshot"
     bindsym --locked XF86AudioMute exec $vol_script mute
 
 
-    
+    # historial con fuzzel
+    bindsym $mod+y exec sh -c 'cliphist list | fuzzel -d | cliphist decode | wl-copy'
+
+    # borrar una entrada concreta (por si copiaste algo que no quieres ahí)
+    bindsym $mod+Shift+y exec sh -c 'cliphist list | fuzzel -d | cliphist delete'
 
 
     # Abrir btop en una ventana flotante

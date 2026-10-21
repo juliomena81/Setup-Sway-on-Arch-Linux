@@ -1,3 +1,4 @@
+# Notification Daemon
 exec swaync
 
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
@@ -5,3 +6,5 @@ exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id autotiling
 
 exec waybar
+
+exec_always --no-startup-id wl-paste --watch cliphist store
